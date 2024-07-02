@@ -37,3 +37,6 @@ contract Certificate {
         return (data.encryptImg, data.ipfs);
     }
 }
+
+
+//0x7c20510DF06039f6b0c59A4B1E79763c862c6Af4
