@@ -1,0 +1,24 @@
+.topnav {
+  background-color: #2c3e50; /* Darker background color */
+  overflow: hidden;
+}
+
+.topnav a {
+  float: right;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.topnav a:hover {
+  background-color: #34495e; /* Slightly darker background on hover */
+  color: #ffffff;
+}
+
+.topnav a.active {
+  background-color: #27ae60; /* Dark green color for active link */
+  color: #ffffff;
+}

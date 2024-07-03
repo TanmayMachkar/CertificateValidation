@@ -13,7 +13,7 @@ const Wallet = ({children}) => {
 		chainId: null
 	})
 	const [loading, setLoading] = useState(false);
-
+	const [connected, setConnected] = useState(false);
 	const handleWallet = async() => {
 		try{
 			setLoading(true);
@@ -35,6 +35,7 @@ const Wallet = ({children}) => {
 				certificateContract,
 				chainId
 			})
+			setConnected(true);
 		} catch(error) {
 			console.error(error);
 		} finally {
@@ -68,7 +69,7 @@ const Wallet = ({children}) => {
 				{children}
 			</ Web3Context.Provider>
 			{loading && <p>Loading...</p>}
-			<Button onClick = {handleWallet} label = 'Connect Wallet' type = 'submit' />
+			{ !connected && <Button onClick = {handleWallet} label = 'Connect Wallet' type = 'submit' />}
 		</div>
 	);
 }
