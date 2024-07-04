@@ -5,8 +5,8 @@ pragma solidity >=0.8.2 <0.9.0;
 contract Certificate {
 
     struct CertificateData {
-        bytes32 encryptImg;
-        string ipfs;
+        bytes32 sha;
+        string hash;
     }
     mapping(address => string) public collegeInfo;
     mapping(bytes32 => CertificateData) public storeHash;
@@ -26,17 +26,17 @@ contract Certificate {
         return collegeInfo[_address];
     }
 
-    function setImageHash(bytes32 _hash, string calldata _ipfs) public {
-        storeHash[_hash].encryptImg = _hash;
-        storeHash[_hash].ipfs = _ipfs;
+    function setImageHash(string calldata _hash, bytes32 _sha) public {
+        storeHash[_sha].sha = _sha;
+        storeHash[_sha].hash = _hash;
     }
 
-    function getImageHash(bytes32 _hash) public view returns (bytes32, string memory) {
-        CertificateData storage data = storeHash[_hash];
-        require(data.encryptImg != bytes32(0), "Hash not found");
-        return (data.encryptImg, data.ipfs);
+    function getImageHash(bytes32 _sha) public view returns (string memory) {
+        CertificateData storage data = storeHash[_sha];
+        require(bytes(data.hash).length != 0, "Hash not found");
+        return (data.hash);
     }
 }
 
 
-//0x7c20510DF06039f6b0c59A4B1E79763c862c6Af4
+//0xCD7f3D1530e03D42011C30c39dC074E2CdE42456

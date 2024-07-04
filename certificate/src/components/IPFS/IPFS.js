@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const IPFS = () => {
+const IPFS = ({setHash}) => {
   const [ file, setFile ] = useState(null);
   const [ fileUrl, setFileUrl ] = useState('');
   const handleSubmit = async(e) => {
@@ -23,6 +23,7 @@ const IPFS = () => {
       })
       const fileUrl = 'https://gateway.pinata.cloud/ipfs/' + responseData.data.IpfsHash;
       //console.log(fileUrl);
+      setHash(responseData.data.IpfsHash);
       setFileUrl(fileUrl);
     } catch(error) {
       console.error(error);
@@ -35,11 +36,6 @@ const IPFS = () => {
       <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} />
       <button type = 'submit' onClick = {handleSubmit}>Upload</button>
       </form>
-      {
-        fileUrl && (
-          <a href = {fileUrl} target = '_blank'>{fileUrl}</a>
-        )
-      }
     </div>
   );
 }
