@@ -4,6 +4,7 @@ import Navigation from './components/Navigation/Navigation';
 import Main from './components/Main/Main';
 import Admin from './components/Admin/Admin';
 import Upload from './components/Upload/Upload';
+import Verify from './components/Verify/Verify';
 import { useState } from 'react';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Main setRoute = {setRoute}/>
         { route === 'admin' ? <Admin setAccountAddress = {setAccountAddress} setClgname = {setClgname} clgname = {clgname} accountAddress = {accountAddress}/> : ''}
         { route === 'upload' ? <Upload accountAddress = {accountAddress} /> : ''}
+        { route === 'verify' ? <Verify /> : ''}
       </ Wallet>
     </div>
   );

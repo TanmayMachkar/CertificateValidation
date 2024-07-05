@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import Button from '../Button/Button';
 
 const IPFS = ({setHash}) => {
   const [ file, setFile ] = useState(null);
@@ -34,7 +35,7 @@ const IPFS = ({setHash}) => {
     <div>
       <form>
       <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} />
-      <button type = 'submit' onClick = {handleSubmit}>Upload</button>
+      <Button type = 'submit' onClick = {handleSubmit} label = 'Upload' />
       </form>
     </div>
   );
