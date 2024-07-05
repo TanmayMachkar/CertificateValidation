@@ -1,12 +1,19 @@
 import axios from 'axios';
 import { useState } from 'react';
 import Button from '../Button/Button';
+import { toast } from "react-hot-toast";
+import './Input.css';
+
+import Loading from '../Loading/Loading';
 
 const IPFS = ({setHash}) => {
   const [ file, setFile ] = useState(null);
   const [ fileUrl, setFileUrl ] = useState('');
+  const [ loading, setLoading ] = useState(false);
+
   const handleSubmit = async(e) => {
     e.preventDefault();
+    setLoading(true);
     //console.log(process.env.REACT_APP_PINATA_API_KEY);
     //console.log(file);
     try{
@@ -27,15 +34,19 @@ const IPFS = ({setHash}) => {
       setHash(responseData.data.IpfsHash);
       setFileUrl(fileUrl);
     } catch(error) {
+      toast.error('Failed to Upload');
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <div>
       <form>
-      <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} />
-      <Button type = 'submit' onClick = {handleSubmit} label = 'Upload' />
+        <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} accept="image/png,image/jpeg"/>
+        {loading && <Loading />}
+        <Button type = 'submit' onClick = {handleSubmit} label = 'Upload' />
       </form>
     </div>
   );

@@ -1,5 +1,5 @@
 import CryptoJS from 'crypto-js';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Web3Context from '../../context/Web3Context';
 
 const ImageToSha = ({imgData, hash}) => {
@@ -13,7 +13,6 @@ const ImageToSha = ({imgData, hash}) => {
 			    console.log(hexHashImage);
 
 			    const setHash = await certificateContract.setImageHash(hash, hexHashImage);
-				console.log("done...");
 			} catch(error) {
 				console.error(error);
 			}

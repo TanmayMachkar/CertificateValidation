@@ -3,6 +3,7 @@ import { handleAccountChange } from '../../utils/handleAccountChange';
 import { handleChainChange } from '../../utils/handleChainChange';
 import { connectWallet } from '../../utils/connectWallet';
 import Web3Context from '../../context/Web3Context';
+import Loading from '../Loading/Loading';
 import Button from '../Button/Button';
 
 const Wallet = ({children}) => {
@@ -68,7 +69,7 @@ const Wallet = ({children}) => {
 			<Web3Context.Provider value = {state}>
 				{children}
 			</ Web3Context.Provider>
-			{loading && <p>Loading...</p>}
+			{loading && <Loading />}
 			{ !connected && <Button onClick = {handleWallet} label = 'Connect Wallet' type = 'submit' />}
 		</div>
 	);

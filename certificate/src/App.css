@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+/*  background-color: black;*/
+  font-family: "Lexend", sans-serif;
+}
+
+.toast {
+  z-index: 9999;
+}

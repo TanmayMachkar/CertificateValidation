@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import Web3Context from '../../context/Web3Context';
 import Button from '../Button/Button';
 import CryptoJS from 'crypto-js';
+import '../IPFS/Input.css';
 
 const Verify = () => {
   const { certificateContract } = useContext(Web3Context);
