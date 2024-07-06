@@ -6,9 +6,11 @@ import './Navigation.css';
 const Navigation = () => {
 	return(
 		<div>
-			<header>
-				<ConnectedAccount />
-				<ConnectedNetwork />
+			<header className = 'header'>
+				<div className = 'rightAligned'>
+					<ConnectedAccount />
+					<ConnectedNetwork />
+				</div>
 			</header>
 		</div>
 	);

@@ -8,4 +8,5 @@ input::file-selector-button {
   padding: 0.5em;
   border: thin solid grey;
   border-radius: 3px;
+  cursor: pointer;
 }

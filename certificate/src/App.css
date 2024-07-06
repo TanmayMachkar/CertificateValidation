@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #39403e;
+  color: PaleGoldenRod;
+}
+
 .App {
   text-align: center;
 }
@@ -37,11 +45,37 @@
   }
 }
 
-body {
-/*  background-color: black;*/
-  font-family: "Lexend", sans-serif;
+/* Optional background animations
+html {
+  height: 100%;
+}
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: .5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
 }
 
-.toast {
-  z-index: 9999;
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
 }
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+*/

@@ -27,7 +27,7 @@ const UrlToImage = ({hash}) => {
       }
     };
     urlToImageObject(exampleUrl);
-  }, [hash]);
+  }, []);
 
   const exampleUrl = `https://gateway.pinata.cloud/ipfs/${hash}`;
 

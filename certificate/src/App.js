@@ -14,9 +14,12 @@ function App() {
 
   return (
     <div className="App">
+      {/*// <div className="bg"></div>
+      // <div className="bg bg2"></div>
+      // <div className="bg bg3"></div>*/}
       <Wallet>
-        <Navigation />
         <Main setRoute = {setRoute}/>
+        <Navigation />
         { route === 'admin' ? <Admin setAccountAddress = {setAccountAddress} setClgname = {setClgname} clgname = {clgname} accountAddress = {accountAddress}/> : ''}
         { route === 'upload' ? <Upload accountAddress = {accountAddress} /> : ''}
         { route === 'verify' ? <Verify /> : ''}

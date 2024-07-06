@@ -13,6 +13,7 @@
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
     "react-scripts": "5.0.1",
+    "tachyons": "^4.12.0",
     "url-to-image": "^1.0.0",
     "web-vitals": "^2.1.4"
   },

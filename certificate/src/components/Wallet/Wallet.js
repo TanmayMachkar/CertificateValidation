@@ -5,6 +5,7 @@ import { connectWallet } from '../../utils/connectWallet';
 import Web3Context from '../../context/Web3Context';
 import Loading from '../Loading/Loading';
 import Button from '../Button/Button';
+// import './Wallet.css';
 
 const Wallet = ({children}) => {
 	const [state, setState] = useState({

@@ -22,10 +22,12 @@ const Admin = ({setAccountAddress, setClgname, clgname, accountAddress}) => {
 
 	return(
 		<div>
-			<div className = "input-container">
-				<input className = "input-field" type = "text" onChange = {(e) => setAccountAddress(e.target.value)} placeholder = 'Enter account address' />
-				<label for = "input-field" className = "input-label">Enter account address</label>
-				<span class="input-highlight"></span>
+			<div className = 'pb2'>
+				<div className = "input-container">
+					<input className = "input-field" type = "text" onChange = {(e) => setAccountAddress(e.target.value)} placeholder = 'Enter account address' />
+					<label for = "input-field" className = "input-label">Enter account address</label>
+					<span class="input-highlight"></span>
+				</div>
 			</div>
 
 			<div className = "input-container">
