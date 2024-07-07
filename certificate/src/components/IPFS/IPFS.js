@@ -46,7 +46,7 @@ const IPFS = ({setHash}) => {
       <form>
         <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} accept="image/png,image/jpeg" />
         {loading && <Loading />}
-        <Button type = 'submit' onClick = {handleSubmit} label = 'Upload' />
+        <Button type = 'submit' onClick = {handleSubmit} label = '📤 Upload' />
       </form>
     </div>
   );

@@ -5,10 +5,11 @@ import Main from './components/Main/Main';
 import Admin from './components/Admin/Admin';
 import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
+import Home from './components/Home/Home';
 import { useState } from 'react';
 
 function App() {
-  const [ route, setRoute ] = useState('home');
+  const [ route, setRoute ] = useState('Home');
   const [accountAddress, setAccountAddress] = useState('');
   const [clgname, setClgname] = useState('');
 
@@ -20,6 +21,7 @@ function App() {
       <Wallet>
         <Main setRoute = {setRoute}/>
         <Navigation />
+        { route === 'Home' ? <Home /> : ''}
         { route === 'admin' ? <Admin setAccountAddress = {setAccountAddress} setClgname = {setClgname} clgname = {clgname} accountAddress = {accountAddress}/> : ''}
         { route === 'upload' ? <Upload accountAddress = {accountAddress} /> : ''}
         { route === 'verify' ? <Verify /> : ''}

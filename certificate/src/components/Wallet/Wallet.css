@@ -1,0 +1,10 @@
+.wallet-container {
+    position: relative;
+}
+
+.connect-wallet-button {
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}

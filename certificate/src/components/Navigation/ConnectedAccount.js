@@ -11,7 +11,7 @@ const ConnectedAccount = () => {
 				<div className = 'pt2'>
 					<div className = 'tooltip-container'>
 						<span className="tooltip">Connected account</span>
-						<span className = 'text'>{account}</span> 
+						<span className = 'text'>{'📍 ' + account}</span> 
 					</div>
 				</div>
 					: 

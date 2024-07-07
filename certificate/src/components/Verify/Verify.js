@@ -43,7 +43,7 @@ const Verify = () => {
     <div>
       <form>
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <Button type="button" onClick={stringToSHA256} label="Verify" />
+        <Button type="button" onClick={stringToSHA256} label="🔎 Verify" />
         {verified ? 
         	<div>
         		<p>Certificate verified</p>

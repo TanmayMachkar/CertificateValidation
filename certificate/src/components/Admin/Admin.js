@@ -35,7 +35,7 @@ const Admin = ({setAccountAddress, setClgname, clgname, accountAddress}) => {
 				<label for = "input-field" className = "input-label">Enter college name</label>
 				<span class="input-highlight"></span>
 			</div>
-			<Button type = 'submit' label = 'Submit Info' onClick = {handleInput} />
+			<Button type = 'submit' label = '➤ Submit Info' onClick = {handleInput} />
 			{loading && <Loading />}
 		</div>
 	);

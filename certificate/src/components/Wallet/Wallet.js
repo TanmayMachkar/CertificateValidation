@@ -5,7 +5,7 @@ import { connectWallet } from '../../utils/connectWallet';
 import Web3Context from '../../context/Web3Context';
 import Loading from '../Loading/Loading';
 import Button from '../Button/Button';
-// import './Wallet.css';
+import './Wallet.css';
 
 const Wallet = ({children}) => {
 	const [state, setState] = useState({
@@ -70,8 +70,12 @@ const Wallet = ({children}) => {
 			<Web3Context.Provider value = {state}>
 				{children}
 			</ Web3Context.Provider>
-			{loading && <Loading />}
-			{ !connected && <Button onClick = {handleWallet} label = 'Connect Wallet' type = 'submit' />}
+			<div className = 'wallet-container'>
+				<div className = 'connect-wallet-button'>
+					{loading && <Loading />}
+					{ !connected && <Button onClick = {handleWallet} label = 'Connect Wallet' type = 'submit'/>}
+				</div>
+			</div>
 		</div>
 	);
 }

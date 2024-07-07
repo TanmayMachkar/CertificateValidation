@@ -14,8 +14,8 @@ const ConnectedNetwork = () => {
 	} else if(chainId === 11155111) {
 		return <div className = 'pt2'>
 					<div className = 'tooltip-container'>
-						<span className="tooltip">Connected network</span>
-						<span className = 'text'>Sepolia network</span> 
+						<span className="tooltip">Network</span>
+						<span className = 'text'>📶 Sepolia</span> 
 					</div>
 				</div>
 	} else {
