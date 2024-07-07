@@ -5,3 +5,63 @@
   border: 0.8px solid #ed5605;
   font-size: 12px;
 }
+
+/* Style for the tooltip container */
+.tooltip-container {
+  --background-light: #ff5555; /* Red */
+  --background-dark: #000000; /* Black */
+  --text-color-light: #ffffff;
+  --text-color-dark: #ffffff;
+  --bubble-size: 12px; /* Brighter glow color */
+
+  position: relative;
+  background: #262729;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 13px;
+  padding: 0.7em 0.7em;
+  color: palegoldenrod;
+  border-radius: 8px; /* Rounded edges */
+}
+
+/* Style for the bubble tooltip */
+.tooltip {
+  position: absolute;
+  top: -100%; /* Initially hidden above the container */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.6em 1em;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s;
+  border-radius: var(--bubble-size);
+  background: #ed5605;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Triangle arrow for the bubble tooltip */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  border-style: solid;
+  border-width: 8px 8px 0;
+  border-color: #ed5605 transparent transparent;
+}
+
+/* Tooltip appearance on hover */
+.tooltip-container:hover {
+  background: #ed5605;
+  color: var(--text-color-dark);
+  box-shadow: 0 0 20px var(--glow-color); /* Brighter glow effect */
+}
+
+.tooltip-container:hover .tooltip {
+  top: -120%; /* Adjusted position for the bubble tooltip */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}

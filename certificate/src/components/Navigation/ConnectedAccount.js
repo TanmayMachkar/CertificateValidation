@@ -7,7 +7,19 @@ const ConnectedAccount = () => {
 
 	return(
 		<div>
-			{account ? <p className = 'connected-ac'>{account}</p> : <p className = 'connected-ac'>Connect Account</p>}
+			{account ?
+				<div className = 'pt2'>
+					<div className = 'tooltip-container'>
+						<span className="tooltip">Connected account</span>
+						<span className = 'text'>{account}</span> 
+					</div>
+				</div>
+					: 
+				<div className = 'tooltip container'>
+					<span class="tooltip">Connect account</span>
+					<p className = 'connected-ac'>No account connected</p> 
+				</div>
+			}
 		</div>
 	);
 }

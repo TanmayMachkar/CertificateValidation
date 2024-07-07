@@ -5,11 +5,26 @@ const ConnectedNetwork = () => {
 	const { chainId } = useContext(Web3Context);
 
 	if(chainId === null) {
-		return <p className = 'connected-ac'>Wallet Not Connected</p>
+		return <div className = 'pt2'>
+					<div className = 'tooltip-container'>
+						<span className="tooltip">Connect Wallet</span>
+						<span className = 'text'>Wallet not connected</span> 
+					</div>
+				</div>
 	} else if(chainId === 11155111) {
-		return <p className = 'connected-ac'>Sepolia Network</p>
+		return <div className = 'pt2'>
+					<div className = 'tooltip-container'>
+						<span className="tooltip">Connected network</span>
+						<span className = 'text'>Sepolia network</span> 
+					</div>
+				</div>
 	} else {
-		return <p className = 'connected-ac'>Switch to Sepolia Network</p>
+		return <div className = 'pt2'>
+					<div className = 'tooltip-container'>
+						<span className="tooltip">Invalid network</span>
+						<span className = 'text'>Switch to sepolia</span> 
+					</div>
+				</div>
 	}
 }
 

@@ -2,6 +2,7 @@ import Web3Context from '../../context/Web3Context';
 import { useState, useContext, useEffect, useRef } from 'react';
 import IPFS from '../IPFS/IPFS';
 import UrlToImage from '../Image/UrlToImage';
+import './Upload.css';
 
 const Upload = () => {
 	const { certificateContract, account } = useContext(Web3Context);
@@ -27,8 +28,16 @@ const Upload = () => {
 
 	return(
 		<div>
-			<p>{activeAcc ? activeAcc : 'Account not registered'}</p>
-			<p>{clg ? clg : 'College not registered'}</p>
+			<div className = 'upload-container'>
+				<div className="p-container">
+			        <div className="p-box">
+			          <p>{activeAcc ? '📍 ' + activeAcc : 'Account not registered'}</p>
+			        </div>
+			        <div className="p-box">
+			          <p>{clg ? '🏛️ ' + clg : 'College not registered'}</p>
+			        </div>
+	      		</div>
+      		</div>
 			<IPFS setHash = {setHash}/>
 			{ hash && 
 				<div>
