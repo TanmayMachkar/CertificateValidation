@@ -19,7 +19,6 @@ const UrlToImage = ({hash}) => {
             url,
             imageData: base64data,
           };
-          //console.log(imageObj.imageData);
           setImgData(imageObj.imageData);
         };
       } catch (error) {
