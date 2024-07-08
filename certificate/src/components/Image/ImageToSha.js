@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js';
 import { useEffect, useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import Web3Context from '../../context/Web3Context';
 
 const ImageToSha = ({imgData, hash}) => {
@@ -8,12 +9,17 @@ const ImageToSha = ({imgData, hash}) => {
 	useEffect(() => {
 		const stringToSHA256 = async(inputString) => {
 		    try{
+		    	toast.loading('Transaction pending...');
 			    const hashImage = CryptoJS.SHA256(inputString).toString(CryptoJS.enc.Hex);
 			    let hexHashImage = '0x' + hashImage;
 			    console.log(hexHashImage);
 
 			    const setHash = await certificateContract.setImageHash(hash, hexHashImage);
+			    toast.dismiss();
+			    toast.success('Transaction successful');
 			} catch(error) {
+				toast.dismiss();
+				toast.error('Transaction failed');
 				console.error(error);
 			}
 		}

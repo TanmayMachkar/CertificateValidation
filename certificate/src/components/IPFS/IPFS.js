@@ -17,6 +17,7 @@ const IPFS = ({setHash}) => {
     //console.log(process.env.REACT_APP_PINATA_API_KEY);
     //console.log(file);
     try{
+      toast.loading('Uploading...')
       const fileData = new FormData();
       fileData.append('file', file);
       const responseData = await axios({
@@ -33,6 +34,8 @@ const IPFS = ({setHash}) => {
       //console.log(fileUrl);
       setHash(responseData.data.IpfsHash);
       setFileUrl(fileUrl);
+      toast.dismiss();
+      toast.success('Uploaded');
     } catch(error) {
       toast.error('Failed to Upload');
       console.error(error);

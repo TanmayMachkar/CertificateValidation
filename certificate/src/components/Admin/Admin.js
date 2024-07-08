@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import Web3Context from '../../context/Web3Context';
 import Button from '../Button/Button';
+import { toast } from 'react-hot-toast';
 import Loading from '../Loading/Loading';
 import './Admin.css';
 
@@ -11,9 +12,14 @@ const Admin = ({setAccountAddress, setClgname, clgname, accountAddress}) => {
 	const handleInput = async(e) => {
 		e.preventDefault();
 		try{
+			toast.loading('Transaction pending...');
 			setLoading(true);
 			const setInfo = await certificateContract.setInfo(accountAddress, clgname);
+			toast.dismiss();
+			toast.success('Transaction successful');
 		} catch(error) {
+			toast.dismiss();
+			toast.error('Transaction failed');
 			console.error(error);
 		} finally {
 			setLoading(false);
