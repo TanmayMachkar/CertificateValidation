@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import { toast } from "react-hot-toast";
 import './Input.css';
 
-import Loading from '../Loading/Loading';
+// import Loading from '../Loading/Loading';
 
 const IPFS = ({setHash}) => {
   const [ file, setFile ] = useState(null);
@@ -48,7 +48,7 @@ const IPFS = ({setHash}) => {
     <div>
       <form>
         <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} accept="image/png,image/jpeg" />
-        {loading && <Loading />}
+        {/*{loading && <Loading className = 'tc'/>}*/}
         <Button type = 'submit' onClick = {handleSubmit} label = '📤 Upload' />
       </form>
     </div>

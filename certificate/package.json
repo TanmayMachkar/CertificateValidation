@@ -4,6 +4,7 @@
   "homepage": "https://TanmayMachkar.github.io/CertificateValidation",
   "private": true,
   "dependencies": {
+    "@pqina/react-pintura": "^9.0.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -13,7 +14,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
+    "react-konva": "^18.2.10",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.11",
     "tachyons": "^4.12.0",
     "url-to-image": "^1.0.0",
     "web-vitals": "^2.1.4"

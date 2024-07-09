@@ -41,7 +41,7 @@ const Upload = () => {
 			<IPFS setHash = {setHash}/>
 			{ hash && 
 				<div>
-					<img src = {`https://gateway.pinata.cloud/ipfs/${hash}`} />
+					<img src = {`https://gateway.pinata.cloud/ipfs/${hash}`} style={{ width: '950px', height: 'auto' }} className = 'pb4 pt2'/>
 					<UrlToImage hash = {hash} />
 				</div>
 			}
