@@ -45,10 +45,11 @@ const Edit = () => {
     <div style={{ height: '80vh' }}>
       {
         !accessSpecify && 
+          (
           <div>
             <svg
-              width="400"
-              height="400"
+              width="380"
+              height="380"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +61,9 @@ const Edit = () => {
                 fill="currentColor"
               />
             </svg>
+            {account ? <p>Register current account to start editing</p> : <p>Connect wallet to start editing</p>}
           </div>
+          )
       }
       <div className = {accessSpecify ? '' : 'blur'}>
         {accessSpecify && <input type="file" accept="image/*" onChange={handleFileChange} />}
