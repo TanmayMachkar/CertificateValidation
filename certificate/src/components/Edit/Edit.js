@@ -1,13 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Web3Context from '../../context/Web3Context';
-import { PinturaEditor } from '@pqina/react-pintura';
-import { getEditorDefaults } from '@pqina/pintura';
-import '@pqina/pintura/pintura.css';
 import toast from 'react-hot-toast';
 import './Edit.css';
 
 const Edit = () => {
-  const [ inlineResult, setInlineResult ] = useState();
   const [ imageSrc, setImageSrc ] = useState();
   const { certificateContract, account } = useContext(Web3Context);
   const [ accessSpecify, setAccessSpecify ] = useState(false);
@@ -67,15 +63,6 @@ const Edit = () => {
       }
       <div className = {accessSpecify ? '' : 'blur'}>
         {accessSpecify && <input type="file" accept="image/*" onChange={handleFileChange} />}
-        {imageSrc && (
-          <PinturaEditor
-            {...getEditorDefaults()}
-            src={imageSrc}
-            onProcess={(res) => setInlineResult(URL.createObjectURL(res.dest))}
-          />
-        )}
-
-        {inlineResult && <img src={inlineResult} alt="" />}
       </div>
     </div>
   );
