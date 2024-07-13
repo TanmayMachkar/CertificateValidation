@@ -8,8 +8,14 @@ contract Certificate {
         bytes32 sha;
         string hash;
     }
+
+    struct govData{
+        address owner;
+    }
+
     mapping(address => string) public collegeInfo;
     mapping(bytes32 => CertificateData) public storeHash;
+    mapping(address => govData) public govAdmin;
 
     function setInfo(address _address, string calldata _clgname) public {
         require(_address != address(0), "Address cannot be empty");
@@ -36,7 +42,21 @@ contract Certificate {
         require(bytes(data.hash).length != 0, "Hash not found");
         return (data.hash);
     }
+
+    function setAdmin(address _address) public {
+        require(_address != address(0), "Address cannot be empty");
+        govAdmin[_address].owner = _address;
+    }
+
+    modifier checkAdminAddress(address _address) {
+        require(govAdmin[_address].owner == _address, "Address cannot be empty");
+        _;
+    }
+
+    function getAdmin(address _address) public view checkAdminAddress(_address) returns (address) {
+        return govAdmin[_address].owner;
+    }
 }
 
 
-//0xCD7f3D1530e03D42011C30c39dC074E2CdE42456
+//0x83cAEd2945bCB654BEE80c60f40C31478353d304

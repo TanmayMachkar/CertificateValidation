@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import './Edit.css';
 import Logo from '../../assets/Logo.png';
 import ImgEditor from './ImgEditor';
+import Button from '../Button/Button';
 
 const Edit = () => {
   const { certificateContract, account } = useContext(Web3Context);
@@ -48,6 +49,15 @@ const Edit = () => {
     checkRegistered();
   }, [account]);
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = resultImg;
+    link.download = 'edited-image.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div style={{ height: '80vh' }}>
       {!accessSpecify && (
@@ -86,7 +96,8 @@ const Edit = () => {
                   <img src={resultImg} alt="" width="200px" height="100px" />
                 </div>
               </div>
-              <button onClick={handleEdit}>Edit Images</button>
+              <Button type = 'submit' onClick={handleEdit} label = '✏️ Edit Image' />
+              {resultImg && <Button type="button" onClick={handleDownload} label="💾 Download Image" />}
             </>
           )
         )}

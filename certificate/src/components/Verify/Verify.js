@@ -68,7 +68,9 @@ const Verify = () => {
         {verified &&
           <div>
             <p>Certificate verified</p>
-            <img src = {`https://gateway.pinata.cloud/ipfs/${hashh}`} />
+            <div className = 'pa5'>
+              <img src = {`https://gateway.pinata.cloud/ipfs/${hashh}`} />
+            </div>
           </div>
         }
         { notVerified === 2 ? <p>Certificate not valid</p> : ''}
