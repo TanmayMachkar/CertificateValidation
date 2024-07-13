@@ -1,14 +1,34 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import Web3Context from '../../context/Web3Context';
 import toast from 'react-hot-toast';
-import ImageEditor from '@toast-ui/react-image-editor';
 import './Edit.css';
+import Logo from '../../assets/Logo.png';
+import ImgEditor from './ImgEditor';
 
 const Edit = () => {
   const { certificateContract, account } = useContext(Web3Context);
   const [accessSpecify, setAccessSpecify] = useState(false);
-  const [imagePath, setImagePath] = useState('');
-  const [imageName, setImageName] = useState('SampleImage');
+  const tui = useRef(null);
+  const [initImg, setInitImg] = useState("");
+  const [resultImg, setResultImg] = useState("");
+  const [editing, setEditing] = useState(false);
+
+  const getUrl = (e) => {
+    const file = e.target.files[0];
+    const url = URL.createObjectURL(file);
+    setInitImg(url);
+  };
+
+  const logImageUrl = () => {
+    let instance = tui.current.getInstance();
+    let dataUrl = instance.toDataURL();
+    setResultImg(dataUrl);
+    handleEdit();
+  };
+
+  const handleEdit = () => {
+    setEditing(!editing);
+  };
 
   useEffect(() => {
     const checkRegistered = async () => {
@@ -27,15 +47,6 @@ const Edit = () => {
     };
     checkRegistered();
   }, [account]);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageURL = URL.createObjectURL(file);
-      setImagePath(imageURL);
-      setImageName(file.name);
-    }
-  };
 
   return (
     <div style={{ height: '80vh' }}>
@@ -60,34 +71,24 @@ const Edit = () => {
       )}
       <div className={accessSpecify ? '' : 'blur'}>
         {accessSpecify && (
-          <div>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
-            {imagePath && (
-              <ImageEditor
-                includeUI={{
-                  loadImage: {
-                    path: imagePath,
-                    name: imageName,
-                  },
-                  theme: 'black',
-                  menu: ['shape', 'filter'],
-                  initMenu: 'filter',
-                  uiSize: {
-                    width: '1000px',
-                    height: '700px',
-                  },
-                  menuBarPosition: 'bottom',
-                }}
-                cssMaxHeight={500}
-                cssMaxWidth={700}
-                selectionStyle={{
-                  cornerSize: 20,
-                  rotatingPointOffset: 70,
-                }}
-                usageStatistics={true}
-              />
-            )}
-          </div>
+          editing ? (
+            <ImgEditor logImageUrl={logImageUrl} tui={tui} initImg={initImg} />
+          ) : (
+            <>
+              <div display="flex">
+                <input type="file" accept="img/*" onChange={getUrl} />
+                <div>
+                  <p>Original</p>
+                  <img src={initImg} alt="" width="200px" height="100px" />
+                </div>
+                <div>
+                  <p>Edited</p>
+                  <img src={resultImg} alt="" width="200px" height="100px" />
+                </div>
+              </div>
+              <button onClick={handleEdit}>Edit Images</button>
+            </>
+          )
         )}
       </div>
     </div>
