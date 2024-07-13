@@ -88,15 +88,15 @@ const Edit = () => {
               <div display="flex">
                 <input type="file" accept="img/*" onChange={getUrl} />
                 <div>
-                  <p>Original</p>
-                  <img src={initImg} alt="" width="200px" height="100px" />
+                  {initImg && <p>Original</p>}
+                  <img src={initImg} alt="" width="400px" height="auto" />
                 </div>
                 <div>
-                  <p>Edited</p>
-                  <img src={resultImg} alt="" width="200px" height="100px" />
+                  {resultImg === '' ? '' : <p>Edited</p>}
+                  <img src={resultImg} alt="" width="400px" height="auto" />
                 </div>
               </div>
-              <Button type = 'submit' onClick={handleEdit} label = '✏️ Edit Image' />
+              {initImg && !resultImg && <Button type = 'submit' onClick={handleEdit} label = '✏️ Edit Image' />}
               {resultImg && <Button type="button" onClick={handleDownload} label="💾 Download Image" />}
             </>
           )
