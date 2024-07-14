@@ -1,7 +1,9 @@
+import Footer from '../Footer/Footer';
 import './Home.css';
 
 const Home = () => {
 	return(
+		<>
 		<div className="grid-container mt2 ml2 mr2">
 		  <div className="box1">Welcome to E-Certificate.</div>
 		  <div className="box2 card">
@@ -27,6 +29,10 @@ const Home = () => {
 		  	</div>
 		  </div>
 		</div>
+		<footer>
+			<Footer />
+		</footer>
+		</>
 	);
 }
 

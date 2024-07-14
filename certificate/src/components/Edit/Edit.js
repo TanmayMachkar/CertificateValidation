@@ -84,21 +84,25 @@ const Edit = () => {
           editing ? (
             <ImgEditor logImageUrl={logImageUrl} tui={tui} initImg={initImg} />
           ) : (
-            <>
-              <div display="flex">
-                <input type="file" accept="img/*" onChange={getUrl} />
-                <div>
-                  {initImg && <p>Original</p>}
-                  <img src={initImg} alt="" width="400px" height="auto" />
+            <div>
+              <input type="file" accept="img/*" onChange={getUrl} />
+              <div className="image-container pl3 pr3">
+                <div className="image-item">
+                  <div>
+                    {initImg === '' ? '' : <p className="cards">Original</p>}
+                    <img src={initImg} alt="" className="image" />
+                  </div>
                 </div>
-                <div>
-                  {resultImg === '' ? '' : <p>Edited</p>}
-                  <img src={resultImg} alt="" width="400px" height="auto" />
+                <div className="image-item">
+                  {resultImg === '' ? '' : <p className="cards">Edited</p>}
+                  <img src={resultImg} alt="" className="image" />
                 </div>
               </div>
-              {initImg && !resultImg && <Button type = 'submit' onClick={handleEdit} label = '✏️ Edit Image' />}
-              {resultImg && <Button type="button" onClick={handleDownload} label="💾 Download Image" />}
-            </>
+              <div className = 'pt3 pb3'>
+                {initImg && !resultImg && <Button type="submit" onClick={handleEdit} label="✏️ Edit Image" />}
+                {resultImg && <Button type="button" onClick={handleDownload} label="💾 Download Edited Image" />}
+              </div>
+            </div>
           )
         )}
       </div>
