@@ -11,6 +11,7 @@ const Verify = () => {
   const [verified, setVerified] = useState(false);
   const [hashh, setHashh] = useState('');
   const [notVerified, setNotVerified] = useState(1);
+  const [salt, setSalt] = useState('protection');
 
   const stringToSHA256 = async () => {
     try {
@@ -27,7 +28,11 @@ const Verify = () => {
       reader.onload = async () => {
         const fileData = reader.result;
 
-        const hashImage = CryptoJS.SHA256(fileData).toString(CryptoJS.enc.Hex);
+        const hashImage = CryptoJS.PBKDF2(fileData, salt, {
+            keySize: 256 / 32,
+            iterations: 1000,
+            hasher: CryptoJS.algo.SHA256,
+          }).toString(CryptoJS.enc.Hex);
         const hexHashImage = '0x' + hashImage;
 
         try {
