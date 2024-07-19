@@ -7,6 +7,7 @@ contract Certificate {
     struct CertificateData {
         bytes32 sha;
         string hash;
+        address student;
     }
 
     struct govData{
@@ -32,15 +33,23 @@ contract Certificate {
         return collegeInfo[_address];
     }
 
-    function setImageHash(string calldata _hash, bytes32 _sha) public {
+    function setImageHash(string calldata _hash, bytes32 _sha, address _student) public {
         storeHash[_sha].sha = _sha;
         storeHash[_sha].hash = _hash;
+        storeHash[_sha].student = _student;
     }
 
     function getImageHash(bytes32 _sha) public view returns (string memory) {
         CertificateData storage data = storeHash[_sha];
         require(bytes(data.hash).length != 0, "Hash not found");
         return (data.hash);
+    }
+
+    function getImageHashAndAcc(bytes32 _sha, address _address) public view returns (string memory, address) {
+        CertificateData storage data = storeHash[_sha];
+        require(bytes(data.hash).length != 0, "Hash not found");
+        require(data.student == _address, "Student not valid");
+        return (data.hash, data.student);
     }
 
     function setAdmin(address _address) public {
@@ -59,4 +68,4 @@ contract Certificate {
 }
 
 
-//0x83cAEd2945bCB654BEE80c60f40C31478353d304
+//0x32eE560C5E54311bad0129c30d3B2fba195509f2

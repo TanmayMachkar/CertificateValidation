@@ -6,7 +6,7 @@ import './Input.css';
 
 // import Loading from '../Loading/Loading';
 
-const IPFS = ({setHash}) => {
+const IPFS = ({setHash, setAcc}) => {
   const [ file, setFile ] = useState(null);
   const [ fileUrl, setFileUrl ] = useState('');
   const [ loading, setLoading ] = useState(false);
@@ -47,7 +47,9 @@ const IPFS = ({setHash}) => {
   return (
     <div>
       <form>
-        <input type = 'file' onChange = {(e) => setFile(e.target.files[0])} accept="image/png,image/jpeg" />
+        <p>Enter student address: </p><input type = 'text' onChange = {(e) => setAcc(e.target.value)} placeholder = 'Enter address of student' field = 'required'/>
+        <br/>
+        <input className = 'pt3' type = 'file' onChange = {(e) => setFile(e.target.files[0])} accept="image/png,image/jpeg" />
         {/*{loading && <Loading className = 'tc'/>}*/}
         <Button type = 'submit' onClick = {handleSubmit} label = '📤 Upload' />
       </form>

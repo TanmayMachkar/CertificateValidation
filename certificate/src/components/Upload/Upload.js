@@ -9,6 +9,8 @@ const Upload = () => {
 	const [ activeAcc, setActiveAcc ] = useState('');
 	const [ clg, setClg ] = useState('');
 	const [ hash, setHash ] = useState('');
+	const [acc, setAcc] = useState('');
+
 
 	const handleClgname = async() => {
 		try{
@@ -38,11 +40,11 @@ const Upload = () => {
 			        </div>
 	      		</div>
       		</div>
-			<IPFS setHash = {setHash}/>
+			<IPFS setHash = {setHash} setAcc = {setAcc} />
 			{ hash && 
 				<div>
 					<img src = {`https://gateway.pinata.cloud/ipfs/${hash}`} style={{ width: '950px', height: 'auto' }} className = 'pb4 pt2'/>
-					<UrlToImage hash = {hash} />
+					<UrlToImage hash = {hash} acc = {acc} />
 				</div>
 			}
 		</div>

@@ -2,8 +2,9 @@ import CryptoJS from 'crypto-js';
 import { useEffect, useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import Web3Context from '../../context/Web3Context';
+import Button from '../Button/Button';
 
-const ImageToSha = ({imgData, hash}) => {
+const ImageToSha = ({imgData, hash, acc}) => {
 	const { certificateContract } = useContext(Web3Context);
 	const [salt, setSalt] = useState('protection');
 
@@ -19,7 +20,7 @@ const ImageToSha = ({imgData, hash}) => {
 			    let hexHashImage = '0x' + hashImage;
 			    console.log(hexHashImage);
 
-			    const setHash = await certificateContract.setImageHash(hash, hexHashImage);
+			    const setHash = await certificateContract.setImageHash(hash, hexHashImage, acc);
 			    toast.dismiss();
 			    toast.success('Transaction successful');
 			} catch(error) {

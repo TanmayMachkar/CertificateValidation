@@ -23,6 +23,11 @@
 				"internalType": "bytes32",
 				"name": "_sha",
 				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "_student",
+				"type": "address"
 			}
 		],
 		"name": "setImageHash",
@@ -108,6 +113,35 @@
 	{
 		"inputs": [
 			{
+				"internalType": "bytes32",
+				"name": "_sha",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "getImageHashAndAcc",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "_address",
 				"type": "address"
@@ -162,6 +196,11 @@
 				"internalType": "string",
 				"name": "hash",
 				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "student",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

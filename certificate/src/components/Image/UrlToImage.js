@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ImageToSha from './ImageToSha';
 
-const UrlToImage = ({hash}) => {
+const UrlToImage = ({hash, acc}) => {
   const [imgData, setImgData] = useState('');
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const UrlToImage = ({hash}) => {
 
   return (
     <div>
-      {imgData && <ImageToSha imgData = {imgData} hash = {hash}/>}
+      {imgData && <ImageToSha imgData = {imgData} hash = {hash} acc = {acc}/>}
     </div>
   );
 }
