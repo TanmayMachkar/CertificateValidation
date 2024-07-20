@@ -32,7 +32,7 @@ export const connectWallet = async() => {
 		provider = new ethers.BrowserProvider(window.ethereum);
 		const signer = await provider.getSigner();
 
-		const certificateContractAddress = '0x32eE560C5E54311bad0129c30d3B2fba195509f2';
+		const certificateContractAddress = '0xF7c3b186f331E28D1c0e4a302f3481F7032ec0E9';
 		certificateContract = new ethers.Contract(certificateContractAddress, CertificateABI, signer);
 
 		return({

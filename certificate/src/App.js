@@ -7,6 +7,7 @@ import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
 import Home from './components/Home/Home';
 import Edit from './components/Edit/Edit';
+import Download from './components/Download/Download';
 import { useState } from 'react';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         { route === 'upload' ? <Upload accountAddress = {accountAddress} /> : ''}
         { route === 'verify' ? <Verify /> : ''}
         { route === 'edit' ? <Edit /> : ''}
+        { route === 'download' ? <Download /> : ''}
       </ Wallet>
     </div>
   );

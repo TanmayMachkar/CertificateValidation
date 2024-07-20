@@ -17,6 +17,7 @@ contract Certificate {
     mapping(address => string) public collegeInfo;
     mapping(bytes32 => CertificateData) public storeHash;
     mapping(address => govData) public govAdmin;
+    mapping(address => bytes32) public getHashDownload;
 
     function setInfo(address _address, string calldata _clgname) public {
         require(_address != address(0), "Address cannot be empty");
@@ -37,6 +38,7 @@ contract Certificate {
         storeHash[_sha].sha = _sha;
         storeHash[_sha].hash = _hash;
         storeHash[_sha].student = _student;
+        getHashDownload[_student] = _sha;
     }
 
     function getImageHash(bytes32 _sha) public view returns (string memory) {
@@ -45,11 +47,11 @@ contract Certificate {
         return (data.hash);
     }
 
-    function getImageHashAndAcc(bytes32 _sha, address _address) public view returns (string memory, address) {
-        CertificateData storage data = storeHash[_sha];
+    function getImageHashAndAcc(address _address) public view returns (string memory) {
+        CertificateData storage data = storeHash[getHashDownload[_address]];
         require(bytes(data.hash).length != 0, "Hash not found");
         require(data.student == _address, "Student not valid");
-        return (data.hash, data.student);
+        return (data.hash);
     }
 
     function setAdmin(address _address) public {
@@ -68,4 +70,4 @@ contract Certificate {
 }
 
 
-//0x32eE560C5E54311bad0129c30d3B2fba195509f2
+//0xF7c3b186f331E28D1c0e4a302f3481F7032ec0E9

@@ -17,6 +17,7 @@ const Main = ({setRoute}) =>{
 					<a href="#news" onClick = {() => setRoute('upload')}><h5>📤 Upload</h5></a>
 					<a href="#news" onClick = {() => setRoute('admin')}><h5>👨🏻‍💼 Admin</h5></a>
 					<a href="#news" onClick = {() => setRoute('verify')}><h5>🔎 Verify</h5></a>
+					<a href="#news" onClick = {() => setRoute('download')}><h5>📥 Download</h5></a>
 				</div>
 			</div>
 		</>
