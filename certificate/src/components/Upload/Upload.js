@@ -40,13 +40,22 @@ const Upload = () => {
 			        </div>
 	      		</div>
       		</div>
-			<IPFS setHash = {setHash} setAcc = {setAcc} />
-			{ hash && 
-				<div>
-					<img src = {`https://gateway.pinata.cloud/ipfs/${hash}`} style={{ width: '950px', height: 'auto' }} className = 'pb4 pt2'/>
-					<UrlToImage hash = {hash} acc = {acc} />
-				</div>
-			}
+			{activeAcc && (
+				<>
+					<IPFS setHash={setHash} setAcc={setAcc} />
+					{hash && (
+						<div>
+							<img
+								src={`https://gateway.pinata.cloud/ipfs/${hash}`}
+								style={{ width: '950px', height: 'auto' }}
+								className='pb4 pt2'
+								alt='Uploaded file'
+							/>
+							<UrlToImage hash={hash} acc={acc} />
+						</div>
+					)}
+				</>
+			)}
 		</div>
 	);
 }
